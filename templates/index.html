@@ -1,0 +1,66 @@
+<html>
+    <head>
+      <title>Flowers Classifier</title>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width" />
+      <!-- <link rel="stylesheet" href="/styles.css" /> -->
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+    </head>
+    
+    <body>
+      
+      <!-- nav bar -->
+      <header id="header">
+        <div class="header-content-div">
+          <a href="/">
+            <img
+              src="/static/logo.png"
+              alt="Company Logo"
+              id="header-img"
+          />
+          </a>
+          <nav id="nav-bar">
+            <a href="#home-sec" class="nav-link">Flowers Classifier</a>
+          </nav>
+        </div>
+      </header>
+  
+      <main>
+        <section id="home-sec" class="flexible home-sec">
+          <div class="eye-grabber-img" style="margin-top: 7rem;">
+          </div>
+          <div class="eye-grabber" style="margin-top: 4rem; background-color:white;">
+            <h1> Flowers Classifier</h1>
+                <!-- Upload file form  -->
+                <form method='POST' enctype='multipart/form-data' class="btn" action="{{ url_for('predict') }}">
+                    {{form.hidden_tag()}}
+                    {{form.file()}}
+                    {{form.submit()}}   
+                </form>
+                {% if prediction %}
+                <h2>Prediction Result:{{ prediction }}</h2>
+                <!-- <p>Predicted Class: {{ prediction }}</p> -->
+                <img src="{{ url_for('static', filename=image_url) }}" alt="Uploaded Image" width="300"/>
+                {% endif %}
+            
+        
+        
+                  
+          </div>
+        </section>     
+      <footer>
+        Created by
+        <a href="#"> L </a>
+      </footer>
+    </body>
+  </html>
+       
+       
+       
+       
+       
+       
+
+   
+    
